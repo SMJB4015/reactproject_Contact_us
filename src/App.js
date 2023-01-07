@@ -39,7 +39,7 @@ function App() {
     addContact(contactData)
 }
   const filterContact = (selectedContact)=>{
-    console.log(selectedContact)
+    setselectedType(selectedContact.type)
   }
   var filterList = contacts
   if (selectedType != ""){
