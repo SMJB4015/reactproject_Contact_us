@@ -10,17 +10,17 @@ function App() {
       id: "e1",
       name: "Rachouen Nagara",
       type: "Technical",
-      message: "Software Engnieer",
+      message: "Probleme coupure d'internet",
     },
     {  id: "e2",
     name: "Othmen Fayela",
     type: "Technical",
-    message: "Mechanical Engnieer", },
+    message: "Debit d'internt est tres faible", },
     {
       id: "e2",
       name: "Sirine Ben Ahmed",
       type: "Commercial",
-      message: "Electrical Engnieer",
+      message: "j'ai pas recu ma facture",
     },
   ];
   const [contacts, setContacts]= useState(contactss);
@@ -30,6 +30,7 @@ function App() {
   const addContact = (newContact)=>{
     setContacts([...contacts, newContact])
   }
+  
   const saveContactHandler = (enteredContact) =>{
     const contactData = {
         ...enteredContact,
@@ -38,17 +39,24 @@ function App() {
     console.log(contactData)
     addContact(contactData)
 }
-  const filterContact = (selectedContact)=>{
-    setselectedType(selectedContact.type)
+  const filterContact = (selectedT)=>{
+    setselectedType(selectedT.target.value)
   }
   var filterList = contacts
   if (selectedType != ""){
     filterList = filterList.filter((item) => {
+      console.log(item.type)
+      console.log(selectedType)
       return item.type == selectedType
     });
   }
+  const removeContact = (id)=>{
+     //const filterList = filterList.filter((contact)=>{
+      //return contact.id != id ;
+    //})
+  }
   const contactsList = filterList.map((contact) => (
-    <Contact contact={contact}></Contact>
+    <Contact contact={contact} delete={removeContact}></Contact>
   ));
   return (
     <div className="App">
