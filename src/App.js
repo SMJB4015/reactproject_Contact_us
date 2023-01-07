@@ -51,9 +51,9 @@ function App() {
     });
   }
   const removeContact = (id)=>{
-     //const filterList = filterList.filter((contact)=>{
-      //return contact.id != id ;
-    //})
+     const filterList = contacts.filter((contact)=>{
+      return contact.id != id ;
+    })
   }
   const contactsList = filterList.map((contact) => (
     <Contact contact={contact} delete={removeContact}></Contact>
